@@ -1,0 +1,8 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+*.sh text eol=lf
+*.webp binary
+*.png binary
+*.cur binary
+*.wav binary
+*.exe binary

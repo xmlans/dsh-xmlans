@@ -1,0 +1,20 @@
+- insert:
+    - id: dsh-xmlans
+      name: dsh-xmlans
+      config:
+        enabled: true
+        scale: 1
+        bubbleScale: 1
+        activityLevel: normal
+        reducedMotion: false
+        soundEnabled: true
+        bubbleMode: always
+        bubbleStates:
+          - SUCCESS
+          - ERROR
+          - WAITING
+        includeSubagents: false
+        webOverlay: false
+        clientTarget: auto
+        balanceEnabled: true
+        balanceSource: auto
