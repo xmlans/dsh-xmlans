@@ -41,6 +41,12 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Use the source helper for tests
+        # The repository ships prebuilt helpers in runtime/bin. The JS tests drive the
+        # Python source helper; the one-file EXE unpacks too slowly for their timeouts.
+        run: |
+          node -e "require('fs').rmSync('runtime/bin', { recursive: true, force: true })"
+
       - name: Run JavaScript tests
         run: npm test
 
@@ -124,6 +130,12 @@ jobs:
 
       - name: Install JavaScript dependencies
         run: npm install --ignore-scripts --no-package-lock
+
+      - name: Use the source helper for tests
+        # The repository ships prebuilt helpers in runtime/bin. The JS tests drive the
+        # Python source helper; the one-file EXE unpacks too slowly for their timeouts.
+        run: |
+          node -e "require('fs').rmSync('runtime/bin', { recursive: true, force: true })"
 
       - name: Run JavaScript tests
         run: npm test
