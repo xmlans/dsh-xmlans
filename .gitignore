@@ -3,7 +3,6 @@ coverage/
 dist/
 build/
 .build/
-runtime/bin/
 *.tgz
 *.log
 __pycache__/

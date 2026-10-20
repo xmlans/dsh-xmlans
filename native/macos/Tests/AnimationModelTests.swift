@@ -82,9 +82,10 @@ final class AnimationModelTests: XCTestCase {
         let model = makeModel()
         model.applyPulse(state: "SUCCESS", ttlMs: 2200, nowMs: 0, resumeState: "IDLE", resumeActivity: nil)
         let deadline = model.pulseDeadlineMs
-        model.advance(elapsedMs: 2100, nowMs: 2100)
+        // The success clip outlasts the 2200 ms ttl, so a repeat mid-clip must not extend it.
+        model.advance(elapsedMs: 1000, nowMs: 1000)
         let frame = model.frameIndex
-        model.applyPulse(state: "SUCCESS", ttlMs: 2200, nowMs: 2100, resumeState: "IDLE", resumeActivity: nil)
+        model.applyPulse(state: "SUCCESS", ttlMs: 2200, nowMs: 1000, resumeState: "IDLE", resumeActivity: nil)
         XCTAssertEqual(model.frameIndex, frame)
         XCTAssertEqual(model.pulseDeadlineMs, deadline)
     }
